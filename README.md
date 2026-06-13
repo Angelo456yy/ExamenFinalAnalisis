@@ -130,7 +130,6 @@ Alta.
 
 ---
 
-# Resumen de la Parte 1
 
 | Código | Historia de usuario                 | Prioridad | Estimación |
 | ------ | ----------------------------------- | --------- | ---------: |
@@ -138,4 +137,4 @@ Alta.
 | HU-02  | Consultar incidentes registrados    | Alta      |   3 puntos |
 | HU-03  | Registrar técnicos y especialidades | Alta      |   3 puntos |
 
-**Estimación total de la Parte 1: 11 puntos.**
+**Estimación total: 11 puntos.**
