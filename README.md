@@ -1,140 +1,231 @@
 # ExamenFinalAnalisis
 Angel Alezander López Martínez 0907-23-6457 
 
-# PARTE 1
-
 # HISTORIAS DE USUARIO
 
 ## Sistema de Gestión de Incidentes de Red – NetGuard GT
 
 ---
 
-## HU-01: Registrar un incidente de red
+## HU-01: Registrar incidente de red
 
-**Como:** coordinador de operaciones
-**Quiero:** registrar un incidente ocurrido en uno de los sitios de red
+**Como:** coordinador de operaciones.
+**Quiero:** registrar un incidente ocurrido en uno de los sitios de red.
 **Para:** mantener un control centralizado de las fallas y evitar la pérdida de información.
-
-### Descripción
-
-El sistema deberá permitir registrar los incidentes que ocurran en las antenas, nodos o puntos de presencia POP de NetGuard GT. Cada incidente deberá contener la información necesaria para identificar la falla, conocer su gravedad y darle seguimiento.
 
 ### Criterios de aceptación
 
-1. El incidente debe incluir título, descripción, sitio de red, tipo de incidente y severidad.
-2. El sitio de red seleccionado debe existir dentro del sistema.
-3. La severidad debe ser crítica, urgente, alta, media o baja.
-4. El incidente debe registrarse inicialmente con el estado **Registrado**.
-5. El sistema debe generar automáticamente un identificador único.
-6. La fecha y hora de registro deben generarse automáticamente.
-7. El sistema debe calcular la fecha límite de resolución de acuerdo con la severidad.
-8. No debe permitirse registrar un incidente con campos obligatorios vacíos.
-9. Al registrar el incidente debe crearse el primer registro en su historial.
-10. El sistema debe responder con un mensaje indicando que el incidente fue creado correctamente.
+1. El sistema debe solicitar título, descripción, sitio de red, tipo de incidente y severidad.
+2. El incidente debe iniciar con el estado **Registrado**.
+3. La fecha y hora de registro deben generarse automáticamente.
+4. El sistema debe calcular el tiempo máximo de resolución según la severidad.
+5. No debe permitirse registrar un incidente con datos obligatorios vacíos.
 
-### Prioridad
-
-Alta.
-
-### Estimación
-
-5 puntos.
-
-### Reglas de negocio relacionadas
-
-* El tiempo máximo de resolución depende de la severidad.
-* Los estados deben avanzar en el orden establecido.
-* Debe existir un historial de cambios.
+**Prioridad:** Alta.
 
 ---
 
-## HU-02: Consultar incidentes registrados
+## HU-02: Consultar incidentes
 
-**Como:** coordinador de operaciones
-**Quiero:** consultar los incidentes registrados en el sistema
-**Para:** conocer su estado, severidad, técnico responsable y tiempo disponible para resolverlos.
-
-### Descripción
-
-El sistema deberá permitir consultar todos los incidentes registrados y buscar un incidente específico. La consulta ayudará a identificar incidentes pendientes, vencidos, escalados o sin técnico asignado.
+**Como:** coordinador de operaciones.
+**Quiero:** consultar los incidentes registrados en el sistema.
+**Para:** conocer su estado, severidad, técnico responsable y tiempo disponible de resolución.
 
 ### Criterios de aceptación
 
-1. El sistema debe mostrar una lista con todos los incidentes registrados.
-2. Cada incidente debe mostrar su identificador, título, sitio, severidad, estado y fecha de registro.
-3. Debe mostrarse el técnico asignado cuando exista.
-4. Cuando no exista un técnico asignado, debe indicarse que el incidente está pendiente de asignación.
-5. Debe mostrarse la fecha límite de resolución.
-6. Debe mostrarse si el incidente se encuentra escalado.
-7. Debe permitirse consultar un incidente mediante su identificador.
-8. Debe permitirse filtrar los incidentes por estado.
-9. Debe permitirse filtrar los incidentes por severidad.
-10. Debe permitirse filtrar los incidentes por técnico o sitio de red.
-11. Cuando el incidente solicitado no exista, el sistema debe responder con un mensaje de error.
-12. Los incidentes deben mostrarse ordenados desde el más reciente hasta el más antiguo.
+1. El sistema debe mostrar todos los incidentes registrados.
+2. Debe permitirse consultar un incidente mediante su identificador.
+3. La consulta debe mostrar el sitio, severidad, estado y técnico asignado.
+4. Debe mostrarse si el incidente está vencido o escalado.
+5. Si el incidente no existe, el sistema debe mostrar un mensaje de error.
 
-### Prioridad
-
-Alta.
-
-### Estimación
-
-3 puntos.
-
-### Reglas de negocio relacionadas
-
-* Control de los estados de los incidentes.
-* Seguimiento del tiempo máximo de resolución.
-* Reportes y consultas de incidentes.
+**Prioridad:** Alta.
 
 ---
 
 ## HU-03: Registrar técnicos y especialidades
 
-**Como:** administrador del sistema
-**Quiero:** registrar a los técnicos junto con sus especialidades
-**Para:** asignar los incidentes únicamente al personal que tenga los conocimientos necesarios.
-
-### Descripción
-
-El sistema deberá permitir registrar a los 12 técnicos de NetGuard GT, indicando sus datos personales, estado y especialidades. Un técnico podrá tener una o varias especialidades.
+**Como:** administrador del sistema.
+**Quiero:** registrar a los técnicos junto con sus especialidades.
+**Para:** asignar los incidentes únicamente al personal capacitado.
 
 ### Criterios de aceptación
 
-1. El técnico debe registrar nombre completo, correo electrónico, teléfono y estado.
-2. El sistema debe generar automáticamente un identificador único para el técnico.
-3. El correo electrónico no puede encontrarse repetido.
-4. El técnico debe tener como mínimo una especialidad.
-5. Las especialidades disponibles serán fibra óptica, microondas y sistemas electrónicos.
-6. Un técnico puede tener más de una especialidad.
-7. El técnico debe registrarse inicialmente como activo.
-8. No debe permitirse asignar incidentes a técnicos inactivos.
-9. Debe permitirse consultar las especialidades de cada técnico.
-10. Debe mostrarse la cantidad de incidentes activos que tiene asignados.
-11. No debe permitirse eliminar un técnico que tenga incidentes activos.
-12. El sistema debe responder con un mensaje indicando que el técnico fue registrado correctamente.
+1. El sistema debe solicitar nombre, correo, teléfono y especialidad.
+2. El correo electrónico del técnico no puede repetirse.
+3. Cada técnico debe tener al menos una especialidad.
+4. Las especialidades disponibles serán fibra óptica, microondas y sistemas electrónicos.
+5. El técnico debe registrarse inicialmente como activo.
 
-### Prioridad
-
-Alta.
-
-### Estimación
-
-3 puntos.
-
-### Reglas de negocio relacionadas
-
-* Un técnico no puede tener más de tres incidentes activos.
-* Solo pueden asignarse técnicos con una especialidad compatible.
-* Los técnicos inactivos no pueden recibir incidentes.
+**Prioridad:** Alta.
 
 ---
 
+## HU-04: Asignar incidente a un técnico
 
-| Código | Historia de usuario                 | Prioridad | Estimación |
-| ------ | ----------------------------------- | --------- | ---------: |
-| HU-01  | Registrar un incidente de red       | Alta      |   5 puntos |
-| HU-02  | Consultar incidentes registrados    | Alta      |   3 puntos |
-| HU-03  | Registrar técnicos y especialidades | Alta      |   3 puntos |
+**Como:** coordinador de operaciones.
+**Quiero:** asignar un incidente a un técnico disponible.
+**Para:** asegurar que la falla sea atendida por una persona responsable y capacitada.
 
-**Estimación total: 11 puntos.**
+### Criterios de aceptación
+
+1. El incidente debe encontrarse en estado **Registrado**.
+2. El técnico debe estar activo.
+3. El técnico debe tener una especialidad compatible con el tipo de incidente.
+4. El técnico no puede tener más de tres incidentes activos.
+5. Al realizar la asignación, el estado debe cambiar a **Asignado**.
+6. La asignación debe registrarse en el historial.
+
+**Prioridad:** Crítica.
+
+---
+
+## HU-05: Iniciar atención de un incidente
+
+**Como:** técnico asignado.
+**Quiero:** cambiar el estado del incidente a **En progreso**.
+**Para:** informar que he comenzado a trabajar en la solución de la falla.
+
+### Criterios de aceptación
+
+1. El incidente debe encontrarse en estado **Asignado**.
+2. Solo el técnico asignado puede iniciar la atención.
+3. El estado debe cambiar de **Asignado** a **En progreso**.
+4. La fecha y hora de inicio deben registrarse automáticamente.
+5. El cambio debe guardarse en el historial del incidente.
+
+**Prioridad:** Alta.
+
+---
+
+## HU-06: Resolver un incidente
+
+**Como:** técnico asignado.
+**Quiero:** marcar el incidente como resuelto y registrar la solución aplicada.
+**Para:** dejar constancia de que la falla fue corregida.
+
+### Criterios de aceptación
+
+1. El incidente debe encontrarse en estado **En progreso**.
+2. Solo el técnico asignado puede resolverlo.
+3. El técnico debe ingresar una descripción de la solución.
+4. El estado debe cambiar de **En progreso** a **Resuelto**.
+5. El sistema debe indicar si el incidente fue resuelto dentro del SLA.
+6. El cambio debe registrarse en el historial.
+
+**Prioridad:** Crítica.
+
+---
+
+## HU-07: Cerrar un incidente
+
+**Como:** coordinador de operaciones.
+**Quiero:** cerrar un incidente después de verificar su solución.
+**Para:** finalizar formalmente el proceso de atención.
+
+### Criterios de aceptación
+
+1. El incidente debe encontrarse en estado **Resuelto**.
+2. El coordinador debe registrar una observación de cierre.
+3. El estado debe cambiar de **Resuelto** a **Cerrado**.
+4. La fecha y hora de cierre deben generarse automáticamente.
+5. El incidente cerrado ya no debe contarse como carga activa del técnico.
+6. El cambio debe registrarse en el historial.
+
+**Prioridad:** Alta.
+
+---
+
+## HU-08: Reasignar un incidente
+
+**Como:** coordinador de operaciones.
+**Quiero:** reasignar un incidente a otro técnico.
+**Para:** garantizar su atención cuando el técnico anterior no pueda continuar con el trabajo.
+
+### Criterios de aceptación
+
+1. El incidente puede reasignarse mientras no se encuentre cerrado.
+2. El nuevo técnico debe estar activo.
+3. El nuevo técnico debe tener la especialidad requerida.
+4. El nuevo técnico debe tener menos de tres incidentes activos.
+5. Debe registrarse el técnico anterior, el nuevo técnico y el motivo.
+6. La reasignación debe conservarse en el historial.
+
+**Prioridad:** Crítica.
+
+---
+
+## HU-09: Liberar un incidente
+
+**Como:** técnico asignado.
+**Quiero:** liberar un incidente que no puedo continuar atendiendo.
+**Para:** permitir que otro técnico capacitado pueda tomarlo.
+
+### Criterios de aceptación
+
+1. Solo el técnico asignado puede liberar el incidente.
+2. El técnico debe ingresar el motivo de la liberación.
+3. El incidente debe quedar sin técnico asignado.
+4. El incidente debe quedar disponible para otro técnico.
+5. El incidente liberado ya no debe contarse en la carga del técnico anterior.
+6. La liberación debe registrarse en el historial.
+
+**Prioridad:** Alta.
+
+---
+
+## HU-10: Escalar incidentes automáticamente
+
+**Como:** coordinador de operaciones.
+**Quiero:** que los incidentes críticos o urgentes sean escalados automáticamente.
+**Para:** evitar que las fallas importantes permanezcan sin atención ni seguimiento.
+
+### Criterios de aceptación
+
+1. El sistema debe revisar los incidentes críticos y urgentes.
+2. El incidente debe permanecer en estado **Registrado** por más de dos horas.
+3. El sistema debe marcar automáticamente el incidente como escalado.
+4. El escalamiento no debe modificar el estado principal del incidente.
+5. Un incidente no debe escalarse más de una vez.
+6. La fecha del escalamiento debe registrarse en el historial.
+
+**Prioridad:** Crítica.
+
+---
+
+## HU-11: Consultar historial de un incidente
+
+**Como:** coordinador de operaciones.
+**Quiero:** consultar el historial completo de un incidente.
+**Para:** conocer los cambios y acciones realizadas durante su atención.
+
+### Criterios de aceptación
+
+1. El historial debe mostrar todos los cambios de estado.
+2. Debe mostrar el estado anterior y el nuevo estado.
+3. Debe mostrar la fecha y hora de cada cambio.
+4. Debe mostrar la persona responsable de la acción.
+5. Debe incluir asignaciones, reasignaciones, liberaciones y escalamientos.
+6. Los registros del historial no deben poder eliminarse ni modificarse.
+
+**Prioridad:** Alta.
+
+---
+
+## HU-12: Generar reportes de incidentes
+
+**Como:** propietario de NetGuard GT.
+**Quiero:** generar reportes de incidentes y cumplimiento de SLA.
+**Para:** evaluar el rendimiento de los técnicos y la calidad del servicio.
+
+### Criterios de aceptación
+
+1. El reporte debe mostrar el total de incidentes registrados.
+2. Debe mostrar los incidentes resueltos dentro y fuera del SLA.
+3. Debe calcular el porcentaje de cumplimiento del SLA.
+4. Debe mostrar los incidentes abiertos, resueltos, cerrados y escalados.
+5. Debe permitir filtrar los resultados por fecha, severidad, sitio y técnico.
+6. Debe mostrar el tiempo promedio de resolución.
+
+**Prioridad:** Alta.
+
