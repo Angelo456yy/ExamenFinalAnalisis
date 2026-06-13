@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: netguardgt-api
+    runtime: docker
+    dockerfilePath: ./NetGuardGT.Api/Dockerfile
+    dockerContext: ./NetGuardGT.Api
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
